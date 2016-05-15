@@ -56,7 +56,7 @@ public class OfferAdapter extends ArrayAdapter<Offer> {
 			detailText.setText(o.teaser);
 		}
 		if (payoutText != null) {
-			payoutText.setText(Integer.toString(o.payout));
+			payoutText.setText("Payout "+Integer.toString(o.payout)+(o.currency!=null? " "+o.currency:""));
 		}
 		if (imageView != null) {
 			imageView.setVisibility(View.VISIBLE);

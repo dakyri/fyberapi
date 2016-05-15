@@ -60,8 +60,8 @@ public class FyberAPI {
 			"     }\n"+
 			"    ] ,\n"+
 			"    \"thumbnail\" : {\n"+
-			"     \"lowres\": \"http://cdn.fyber.com/assets/1808/icon175x175-2_square_60.png\",\n"+
-			"     \"hires\": \"http://cdn.fyber.com/assets/1808/icon175x175-2_square_175.png\"\n"+
+			"     \"lowres\": \"http://i458.photobucket.com/albums/qq302/North_Nitro/nonransparent.gif\",\n"+
+			"     \"hires\": \"https://geekgirlsrule.files.wordpress.com/2012/05/512px-facepalm_yellow_svg.png\"\n"+
 			"    },\n"+
 			"    \"payout\": 90,\n"+
 			"    \"time_to_payout\" : {\n"+
@@ -181,6 +181,13 @@ public class FyberAPI {
 	private void processJSONResult(JSONObject result) {
 		ArrayList<Offer> offers = new ArrayList<Offer>();
 		try {
+			String currency = null;
+			try {
+				JSONObject resi = result.getJSONObject("information");
+				currency = resi.getString("virtual_currency");
+			} catch (JSONException e) {
+
+			}
 			JSONArray resa = result.getJSONArray("offers");
 			for (int i=0; i<resa.length(); i++) {
 				JSONObject reso = resa.getJSONObject(i);
@@ -188,6 +195,7 @@ public class FyberAPI {
 				if ((o=getOffer(reso)) == null) {
 					return; // will already have notified precise error
 				}
+				o.currency = currency;
 				offers.add(o);
 			}
 		} catch (JSONException e) {

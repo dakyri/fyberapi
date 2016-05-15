@@ -39,12 +39,14 @@ public class Offer {
 		payout = 0;
 		secsToPayout = 0;
 		timeToPayout = "";
+		currency = "";
 	}
 
 	protected String link;
 	protected String title;
 	protected int offerId;
 	protected String teaser;
+	protected String currency;
 	protected String requiredActions;
 	protected CachedImage thumbnailLow;
 	protected CachedImage thumbnailHigh;
