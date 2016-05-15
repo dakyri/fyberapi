@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="LabelText">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/labelTextColor</item>
+        <item name="android:textSize">@dimen/baseTextSize</item>
+    </style>
+
+    <style name="InputText">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/inputTextColor</item>
+        <item name="android:textSize">@dimen/baseTextSize</item>
+        <item name="android:background">@color/inputTextBackground</item>
+    </style>
+
+    <style name="DetailText">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/detailTextColor</item>
+        <item name="android:textSize">@dimen/detailTextSize</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/titleTextColor</item>
+        <item name="android:textSize">@dimen/titleTextSize</item>
+    </style>
+
+    <style name="ErrorText">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/errorTextColor</item>
+        <item name="android:textSize">@dimen/baseTextSize</item>
+    </style>
+</resources>

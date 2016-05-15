@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#449def</color>
+    <color name="colorPrimaryDark">#3080d0</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="labelTextColor">#777777</color>
+    <color name="inputTextColor">#000000</color>
+    <color name="inputTextBackground">#d8d8d8</color>
+    <color name="detailTextColor">#222222</color>
+    <color name="titleTextColor">#000000</color>
+
+    <color name="errorTextColor">#ff2222</color>
+    <color name="uiDisabledGrey">#888888</color>
+    <color name="padLightBlue">#449def</color>
+    <color name="padBorderBlue">#0f4689</color>
+    <color name="padDarkBlue">#2f6699</color>
+</resources>

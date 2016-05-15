@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">FyberAPI</string>
+    <string name="http_error_unknown">Unknown error</string>
+    <string name="base_url">http://api.fyber.com/feed/v1/offers.json</string>
+    <string name="http_error_security_hash_not_found">Security hash not found</string>
+    <string name="http_error_security_hash_failed">Security hash failed</string>
+    <string name="label_uid">UID</string>
+    <string name="label_api">API Key</string>
+    <string name="label_appid">App Id</string>
+    <string name="label_pub0">Pub 0</string>
+    <string name="default_uid_input_value">input UID</string>
+    <string name="default_input_api_value">input API Key</string>
+    <string name="default_input_uid_value">input UID</string>
+    <string name="default_input_pubb0_value">input pub0</string>
+    <string name="label_find_offers">Find Offers</string>
+    <string name="error_text_uid">Invalid uid</string>
+    <string name="error_text_apikey">Invalid api key input</string>
+    <string name="error_text_appid">invalid appid input</string>
+    <string name="given_uid">spiderman</string>
+    <string name="given_api_key">1c915e3b5d42d05136185030892fbb846c278927</string>
+    <string name="given_appid">2070</string>
+    <string name="given_locale">DE</string>
+    <string name="given_ip">109.235.143.113</string>
+    <string name="given_offer_types">112</string>
+    <string name="given_pub0">campaign2</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+    <TextView
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:id="@+id/titleText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        style="@style/DetailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/display_margin_v"
+        android:text="Lop sum do sum and loriam ooops, or however it goes."
+        android:id="@+id/detailText"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/titleText"/>
+
+    <TextView
+        style="@style/DetailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/display_margin_v"
+        android:text="Payout Details"
+        android:id="@+id/payoutText"
+        android:layout_below="@+id/detailText"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/detailText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/display_margin_v"
+        />
+
+</RelativeLayout>
