@@ -12,4 +12,6 @@
     <dimen name="baseTextSize">13dp</dimen>
     <dimen name="titleTextSize">16sp</dimen>
     <dimen name="detailTextSize">13sp</dimen>
+    <dimen name="main_margin_v">20dp</dimen>
+    <dimen name="mainFormPadding">15dp</dimen>
 </resources>

@@ -27,6 +27,7 @@ public class JSONReader extends AsyncTask<String, Integer, JSONObject> {
 	Response response = null;
 	OkHttpClient okclient = null;
 
+
 	@Override
 	protected JSONObject doInBackground(String... urls)
 	{

@@ -62,7 +62,7 @@ public class FyberAPITest extends TestCase {
 
 	@Before
 	public void setUp() throws Exception {
-		fyberAPI = new FyberAPI(null, "http://api.fyber.com/feed/v1/offers.json");
+		fyberAPI = new FyberAPI(null, "http://api.fyber.com/feed/v1/offers.json", false);
 	}
 
 	@Test
@@ -77,8 +77,8 @@ public class FyberAPITest extends TestCase {
 		assertEquals("Download and START", o.teaser);
 		assertEquals("Download and START", o.requiredActions);
 		assertEquals("http://iframe.fyber.com/mbrowser?appid=157&lpid=11387&uid=player1", o.link);
-		assertEquals("http://cdn.fyber.com/assets/1808/icon175x175-2_square_60.png", o.thumbnailLow);
-		assertEquals("http://cdn.fyber.com/assets/1808/icon175x175-2_square_175.png", o.thumbnailHigh);
+		assertEquals("http://cdn.fyber.com/assets/1808/icon175x175-2_square_60.png", o.thumbnailLow.getUri());
+		assertEquals("http://cdn.fyber.com/assets/1808/icon175x175-2_square_175.png", o.thumbnailHigh.getUri());
 		assertEquals(90, o.payout);
 		assertEquals(1800, o.secsToPayout);
 		assertEquals("30 minutes", o.timeToPayout);

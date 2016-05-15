@@ -29,6 +29,51 @@ public class FyberAPI {
 	private String googleId;
 	private String gaoie;
 
+	private final String mockedResponseData = "{\n"+
+			" \"code\": \" OK\" ,\n"+
+			" \"message\": \"OK\",\n"+
+			" \"count\": 1,\n"+
+			" \"pages\": 1,\n"+
+			" \"information\" : {\n"+
+			"  \"app_name\": \"SP Test App\" ,\n"+
+			"  \"appid\": 157,\n"+
+			"  \"virtual_currency\": \"Coins\",\n"+
+			"  \"country\": \" US\" ,\n"+
+			"  \"language\": \" EN\" ,\n"+
+			"  \"support_url\": \"http://iframe.fyber.com/mobile/DE/157/my_offers\"\n"+
+			" },\n"+
+			" \"offers\": [\n"+
+			"  {\n"+
+			"    \"title\": \"Tap  Fish\",\n"+
+			"    \"offer_id\": 13554,\n"+
+			"    \"teaser\": \"Download and START\" ,\n"+
+			"    \"required_actions\": \"Download and START\",\n"+
+			"    \"link\": \"http://iframe.fyber.com/mbrowser?appid=157&lpid=11387&uid=player1\",\n"+
+			"    \"offer_types\" : [\n"+
+			"     {\n"+
+			"      \"offer_type_id\": 101,\n"+
+			"      \"readable\": \"Download\"\n"+
+			"     },\n"+
+			"     {\n"+
+			"      \"offer_type_id\": 112,\n"+
+			"      \"readable\": \"Free\"\n"+
+			"     }\n"+
+			"    ] ,\n"+
+			"    \"thumbnail\" : {\n"+
+			"     \"lowres\": \"http://cdn.fyber.com/assets/1808/icon175x175-2_square_60.png\",\n"+
+			"     \"hires\": \"http://cdn.fyber.com/assets/1808/icon175x175-2_square_175.png\"\n"+
+			"    },\n"+
+			"    \"payout\": 90,\n"+
+			"    \"time_to_payout\" : {\n"+
+			"     \"amount\": 1800 ,\n"+
+			"     \"readable\": \"30 minutes\"\n"+
+			"    }\n"+
+			"  }\n"+
+			" ]\n"+
+			"}";
+
+	private final boolean mockedResponse = true;
+
 	private class GetGoogleAdsInfo extends AsyncTask<String, Integer, String> {
 
 		@Override
@@ -64,7 +109,9 @@ public class FyberAPI {
 		this.context = c;
 		googleId = null;
 		gaoie = null;
-		new GetGoogleAdsInfo().execute();
+		if (fetchGooApis) {
+			new GetGoogleAdsInfo().execute();
+		}
 	}
 
 	public void setGooApis(String googleId, boolean gaoie) {
@@ -80,7 +127,16 @@ public class FyberAPI {
 			final String ip,
 			final String offerTypes,
 			final String apiKey,
-			final String pub0) {
+			final String pub0)  {
+
+		if (mockedResponse) {
+			try {
+				processJSONResult(new JSONObject(mockedResponseData));
+			} catch (JSONException e) {
+				notifyError("mocking response fails");
+			}
+			return;
+		}
 
 		final JSONReader loader = new JSONReader() {
 			@Override
@@ -103,24 +159,7 @@ public class FyberAPI {
 					notifyError(context.getString(R.string.http_error_security_hash_failed));
 					return;
 				}
-				ArrayList<Offer> offers = null;
-				try {
-					JSONArray resa = result.getJSONArray("offers");
-					for (int i=0; i<resa.length(); i++) {
-						JSONObject reso = resa.getJSONObject(i);
-						Offer o;
-						if ((o=getOffer(reso)) == null) {
-							return; // will already have notified precise error
-						}
-						offers.add(o);
-					}
-				} catch (JSONException e) {
-					notifyError(e.getMessage());
-					return;
-				}
-				if (listener != null) {
-					listener.offersReceived(offers);
-				}
+				processJSONResult(result);
 			}
 
 			@Override
@@ -137,6 +176,27 @@ public class FyberAPI {
 		};
 		Uri targetURI = makeURL(appId, userId, deviceID, locale, ip, offerTypes, apiKey, pub0, System.currentTimeMillis());
 		loader.execute(targetURI.toString());
+	}
+
+	private void processJSONResult(JSONObject result) {
+		ArrayList<Offer> offers = new ArrayList<Offer>();
+		try {
+			JSONArray resa = result.getJSONArray("offers");
+			for (int i=0; i<resa.length(); i++) {
+				JSONObject reso = resa.getJSONObject(i);
+				Offer o;
+				if ((o=getOffer(reso)) == null) {
+					return; // will already have notified precise error
+				}
+				offers.add(o);
+			}
+		} catch (JSONException e) {
+			notifyError(e.getMessage());
+			return;
+		}
+		if (listener != null) {
+			listener.offersReceived(offers);
+		}
 	}
 
 	protected boolean verifyResponsHash(String responseBody, String apiKey, String responseHash) {

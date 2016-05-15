@@ -39,4 +39,8 @@ public class CachedImage {
 		this.uri = uri;
 		this.image = null;
 	}
+
+	public String getUri() {
+		return uri;
+	}
 }
