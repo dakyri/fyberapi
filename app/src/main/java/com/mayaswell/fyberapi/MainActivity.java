@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 				showOfferDisplay(offers);
 			}
 		});
+		fyberAPI.setMockedResponse(false);
 	}
 
 	private boolean validUidText() {

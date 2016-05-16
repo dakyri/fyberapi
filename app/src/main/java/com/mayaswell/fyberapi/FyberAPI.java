@@ -72,7 +72,7 @@ public class FyberAPI {
 			" ]\n"+
 			"}";
 
-	private final boolean mockedResponse = true;
+	private boolean mockedResponse = false;
 
 	private class GetGoogleAdsInfo extends AsyncTask<String, Integer, String> {
 
@@ -117,6 +117,10 @@ public class FyberAPI {
 	public void setGooApis(String googleId, boolean gaoie) {
 		this.googleId = googleId;
 		this.gaoie = gaoie? "true":"false";
+	}
+
+	public void setMockedResponse(boolean mocked) {
+		mockedResponse = mocked;
 	}
 
 	public void request(
