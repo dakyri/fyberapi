@@ -1,32 +1,42 @@
 package com.mayaswell.fyberapi;
 
+import android.app.Application;
+import android.app.Instrumentation;
 import android.content.Context;
 import android.net.Uri;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.AndroidTestCase;
+import android.test.ApplicationTestCase;
 import android.test.InstrumentationTestCase;
-import android.test.suitebuilder.annotation.SmallTest;
-
-import junit.framework.TestCase;
+import android.test.suitebuilder.annotation.LargeTest;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Created by dak on 5/15/2016.
- *
- * unit test for things not mockable
+ * Created by dak on 5/19/2016.
  */
 @RunWith(AndroidJUnit4.class)
-@SmallTest
-public class FyberAPITest extends InstrumentationTestCase {
+@LargeTest
+public class FyberAPIInstrumentationTest extends InstrumentationTestCase {
 
+	public FyberAPIInstrumentationTest() {
+		super();
+	}
 	private FyberAPI fyberAPI;
 
 	@Before
-	public void setUp() throws Exception {
-		Context c = getInstrumentation().getContext();
+	public void setUp() throws Exception  {
+		super.setUp();
+		injectInstrumentation(InstrumentationRegistry.getInstrumentation());
+		Instrumentation in = this.getInstrumentation();
+		assertNotNull(in);
+		Context c = in.getTargetContext();
+		assertNotNull(c);
+		String s = c.getString(R.string.base_url);
+		assertEquals("http://api.fyber.com/feed/v1/offers.json", s);
 		fyberAPI = new FyberAPI(c, c.getString(R.string.base_url), false);
 		fyberAPI.setGooApis("a1e5b437-0259-4f20-a16c-b6cc838a37c5", false);
 	}
