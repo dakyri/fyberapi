@@ -74,6 +74,9 @@ public class FyberAPI {
 
 	private boolean mockedResponse = false;
 
+	/**
+	 * pull google ad info asynchronously
+	 */
 	private class GetGoogleAdsInfo extends AsyncTask<String, Integer, String> {
 
 		@Override
