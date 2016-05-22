@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 				showOfferDisplay(offers);
 			}
 		});
-		fyberAPI.setMockedResponse(false);
+		fyberAPI.setMockedResponse(true);
 	}
 
 	private boolean validUidText() {
@@ -194,5 +194,11 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
+	}
+
+	public void setFyberAPIMocked(boolean b) {
+		if (fyberAPI != null) {
+			fyberAPI.setMockedResponse(b);
+		}
 	}
 }
